@@ -21,7 +21,7 @@ namespace otomasyon
        
         private void btn_giris_Click(object sender, EventArgs e)
         {
-
+            // giriş bölümü
             DB db = new DB();
             int state;
             state= db.userState(txt_username.Text, db.MD5Sifrele(txt_userpass.Text));
@@ -54,6 +54,7 @@ namespace otomasyon
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // kayıt bölümü
             this.Hide();
             kaydetkul kyt = new kaydetkul();
             kyt.Show();

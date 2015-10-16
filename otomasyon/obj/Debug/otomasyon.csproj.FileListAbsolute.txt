@@ -12,3 +12,6 @@ C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debu
 C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
 C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debug\otomasyon.muhasebe.resources
 C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
+C:\Users\bp14\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
+C:\Users\bp14\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+C:\Users\bp14\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
