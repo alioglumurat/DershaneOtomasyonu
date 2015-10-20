@@ -1,0 +1,9 @@
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\bin\Debug\chnProjeSinif.exe.config
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\bin\Debug\chnProjeSinif.exe
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\bin\Debug\chnProjeSinif.pdb
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.csprojResolveAssemblyReference.cache
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.Form1.resources
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.Properties.Resources.resources
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.csproj.GenerateResource.Cache
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.exe
+c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.pdb
