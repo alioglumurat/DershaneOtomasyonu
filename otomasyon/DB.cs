@@ -13,10 +13,10 @@ namespace otomasyon
 {
     class DB
     {
-        private String dataSource = "OMER-PC";
+        private String dataSource = "ERDEM";
         private String database = "dershaneERP";
         private String userId = "sa";
-        private String pass = "54321";
+        private String pass = "12345";
 
         SqlConnection con;
 
