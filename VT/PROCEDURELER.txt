@@ -1,0 +1,9 @@
+dersGetir --- derslerin listesini getiren bir procedure.
+dersSaatigetir ---   seçilen dersin saatini getiren procedure.
+users-- sistemde kayitli olan kullanici listesi procedure.
+userSave-- sisteme kullanici kayit eden procedure
+
+
+
+function ---
+fiyatGetir : seçilen dersin saatlik ücretini getiren function.

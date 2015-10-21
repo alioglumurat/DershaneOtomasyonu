@@ -7,3 +7,6 @@ c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeS
 c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.csproj.GenerateResource.Cache
 c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.exe
 c:\users\cihanugur\documents\visual studio 2015\Projects\chnProjeSinif\chnProjeSinif\obj\Debug\chnProjeSinif.pdb
+C:\Users\Omer\Documents\GitHub\DershaneOtomasyonu\chnProjeSinif\bin\Debug\chnProjeSinif.exe.config
+C:\Users\Omer\Documents\GitHub\DershaneOtomasyonu\chnProjeSinif\obj\Debug\chnProjeSinif.exe
+C:\Users\Omer\Documents\GitHub\DershaneOtomasyonu\chnProjeSinif\obj\Debug\chnProjeSinif.pdb
