@@ -13,10 +13,10 @@ namespace otomasyon
 {
     class DB
     {
-        private String dataSource = "ERDEM";
+        private String dataSource = "OMER-PC";
         private String database = "dershaneERP";
         private String userId = "sa";
-        private String pass = "12345";
+        private String pass = "54321";
 
         SqlConnection con;
 
@@ -25,7 +25,8 @@ namespace otomasyon
         {
             try
             {
-                con = new SqlConnection("Data Source="+dataSource+"; Database="+database+"; Persist Security Info=False; User ID="+userId+"; Password="+pass+"");
+                con = new SqlConnection("Data Source=CUGUR; Database="+database+"; integrated Security =true;");
+               
             }
             catch (Exception ex)
             {
@@ -249,6 +250,23 @@ namespace otomasyon
                 MessageBox.Show("Ders saat ücreti getirme hatası");
             }
             return sayi;
+        }
+
+        public DataTable gridData(String tableName)
+        {
+            DataTable dt = null;
+            try
+            {
+                SqlCommand cm = new SqlCommand("select *from " + tableName + "", baglan());
+                SqlDataReader rd = cm.ExecuteReader();
+                dt = new DataTable();
+                dt.Load(rd);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
         }
 
     }

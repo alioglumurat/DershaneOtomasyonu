@@ -23,5 +23,12 @@ namespace otomasyon
             Form1 fr = new Form1();
             fr.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SınıfForm sf = new SınıfForm();
+            sf.Show();
+        }
     }
 }
