@@ -25,8 +25,7 @@ namespace otomasyon
         {
             try
             {
-                con = new SqlConnection("Data Source=CUGUR; Database="+database+"; integrated Security =true;");
-               
+                con = new SqlConnection("Data Source="+dataSource+"; Database="+database+"; Persist Security Info=False; User ID="+userId+"; Password="+pass+"");
             }
             catch (Exception ex)
             {
@@ -94,12 +93,16 @@ namespace otomasyon
 
                 if (oku.Read())
                 {
-                    state = Convert.ToInt32(oku["State"]);
+                    Form1.state = Convert.ToInt32(oku["State"]);
+                    Form1.degisken = username;
                     MessageBox.Show("Sisteme hoşgeldiniz");
+                   
                 }
                 else
                 {
                     MessageBox.Show("Hatalı giriş yaptınız");
+                    kapat();
+                   Form1.state= - 1;
                 }
 
             }
@@ -209,29 +212,7 @@ namespace otomasyon
      
         }
 
-        public int fiyatGetir(Dictionary<int,String> dic)
-        {
-            try
-            {
-                for (int i = 0; i < dic.Values.Count; i++)
-                {
-                    String kelime = (String)dic[i];
-                    MessageBox.Show(kelime);
-                } 
-
-                SqlCommand islem = new SqlCommand("SELECT dbo.fiyatGetir(@dersAd)",baglan());
-                SqlParameter ax = new SqlParameter("@dersAd",SqlDbType.VarChar,50);
-                ax.Direction = ParameterDirection.Input;
-                //ax.Value=
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Fiyat getirme hatası");
-
-            }
-            int a = 9;
-            return a;
-        }
+       
         public int saatUcreti(String dersAdi)
         {
             int sayi = 0;
@@ -252,22 +233,28 @@ namespace otomasyon
             return sayi;
         }
 
-        public DataTable gridData(String tableName)
+        public int idGetir(String dersAdi)
         {
-            DataTable dt = null;
+            int sayi = 0;
             try
             {
-                SqlCommand cm = new SqlCommand("select *from " + tableName + "", baglan());
-                SqlDataReader rd = cm.ExecuteReader();
-                dt = new DataTable();
-                dt.Load(rd);
+                SqlCommand islem = new SqlCommand("SELECT dbo.dersIDGetir(@dersAdi)", baglan());
+                SqlParameter ax = new SqlParameter("@dersAdi",SqlDbType.VarChar,50);
+                ax.Direction = ParameterDirection.Input;
+                ax.Value = dersAdi;
+                islem.Parameters.Add(ax);
+                sayi = Convert.ToInt32(islem.ExecuteScalar());
+
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Ders ıd getirme hatası"+ex);
+                
             }
-            return dt;
+            return sayi;
+
         }
+        
 
     }
 }
