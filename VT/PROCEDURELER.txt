@@ -1,34 +1,74 @@
-calisanGetir --- sistemde tanimli olan admin disinda ki tüm kullanicilari getirir.
-------------PROCEDURE-----------------
+PROCEDURES
+ALTER procedure [dbo].[giderTipiEkle]
+@giderAdi varchar (250)
+as
+begin
+insert into gidertipleri(adi) values(@giderAdi)
+end
 
+ALTER procedure [dbo].[giderTipiGuncelle]
+@giderID int,
+@giderAdi varchar (250)
+as
+begin
+Update gidertipleri set adi=@giderAdi where id=@giderID
+end
 
-dersGetir --- derslerin listesini getiren bir procedure.
+ALTER procedure [dbo].[giderTipiListele]
+as
+begin
+select * from gidertipleri
+end
 
-dersSaatigetir ---   seçilen dersin saatini getiren procedure.
+ALTER procedure [dbo].[giderEkle]
+@giderAdi varchar (250),
+@tutar money,
+@aciklama varchar (500),
+@dosya varchar (1000)
 
-users-- sistemde kayitli olan kullanici listesi procedure.
+as
+declare @giderID int
+select @giderID = id from gidertipleri where adi = @giderAdi
+begin
+insert into gider(giderID,tutar,aciklama,dosya) values(@giderID,@tutar,@aciklama,@dosya)
+end
 
-userSave-- sisteme kullanici kayit eden procedure
+ALTER procedure [dbo].[giderGuncelle]
+@ID int,
+@gadi varchar (250),
+@aciklama varchar (500),
+@tutar money,
+@dosya varchar (1000)
+as
+declare @giderID int
+select @giderID = id from gidertipleri where adi = @gadi;
+begin
+Update gider set aciklama = @aciklama, tutar = @tutar, dosya = @dosya, giderId = @giderID  where id = @ID
+end
 
-degis --- personel bilgilerini kayit eder.
+ALTER procedure [dbo].[giderSil]
+@giderID int
+as
+begin
+delete from gider where id = @giderID
+end
 
-gorusmeKaydet--- yapilan görüsmeyi kaydeder.
+ALTER procedure [dbo].[giderListele]
+as
+begin
+select gd.id, gt.adi, gd.aciklama, gd.tutar, gd.dosya, gd.tarih from gider as gd left join gidertipleri as gt on gd.giderId = gt.id
+end
 
-rapor--- yapilan satislarin raporunu getirir. seçilen yil, ay ve satis yapan kisinin isim soyismine göre basarili,basarisiz veya ihtimalli satislari getirir.
+ALTER procedure [dbo].[giderAdiCombo]
+as
+begin
+select adi from gidertipleri
+end
 
-ogrenciEklee--- yeni öðrenci kayýt eden procedure
-
-ogrenciSil--- kayýtlý olan öðrenci silen procedure
-
-ogrenciGuncel--- öðrencide yanlýþ girilen bilgiyi düzenleme yapan procedure
-
-liste--- datagridviewde tüm öðrencileri getiren procedure
-
-----------------FUNCTION-----------
-
-dersIDGetir  --- seçilen dersin ID sini getirir.
-perID --- seçilen username in ID sini getirir.
-saatUcreti -- seçilen dersin saat ücretini getirir.
-wer---- sisteme giris yapan kullanicinin profil bilgilerinin kayitli olma durumunu kontrol eder.
-toplamDersSaati ----- seçilen dersin sistemde kayitli olan saat sayisini getirir.
-maxId--- en son kayýt edilen öðrencinin ID getiren function.
+FULL TEXT CATALOG
+ALTER procedure [dbo].[giderArama]
+@kelime varchar (250)
+as
+begin
+select gd.id, gt.adi, gd.aciklama, gd.tutar, gd.dosya, gd.tarih from gider as gd left join gidertipleri as gt on gd.giderId = gt.id where contains(aciklama,@kelime)
+end
