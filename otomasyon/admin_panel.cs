@@ -26,14 +26,9 @@ namespace otomasyon
 
         private void admin_panel_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
             this.Hide();
-            satisRaporlari st = new satisRaporlari();
-            st.Show();
+            Form1 fr = new Form1();
+            fr.Show();
         }
     }
 }

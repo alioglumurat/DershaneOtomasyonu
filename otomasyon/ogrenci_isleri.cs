@@ -19,7 +19,16 @@ namespace otomasyon
 
         private void ogrenci_isleri_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Form1 fr = new Form1();
+            fr.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SınıfForm sf = new SınıfForm();
+            sf.Show();
         }
     }
 }

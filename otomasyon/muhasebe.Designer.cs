@@ -49,7 +49,6 @@
             this.Name = "muhasebe";
             this.Text = "muhasebe";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.muhasebe_FormClosed);
-            this.Load += new System.EventHandler(this.muhasebe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

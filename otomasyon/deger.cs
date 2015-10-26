@@ -8,10 +8,10 @@ namespace otomasyon
 {
     class deger
     {
-     
+        public int saat { get; set; }
+        public String dersAdi { get; set; }
+
         public int gSaat { get; set; }
         public String gdersAdi { get; set; }
-        public int ucret { get; set; }
-        public int dersId { get; set; }
     }
 }

@@ -19,6 +19,9 @@ namespace otomasyon
         }
         DB db = new DB();
 
+       
+
+      
         private void button1_Click(object sender, EventArgs e)
         {
             bool sonuc = true;
@@ -84,32 +87,8 @@ namespace otomasyon
                 db.kapat();
                 MessageBox.Show("Kayıt İşlemi Başarılı!");
                 this.Hide();
-              
-                switch (Form1.state)
-                {
-                    case 0:
-                        this.Hide();
-                        admin_panel adm = new admin_panel();
-                        adm.Show();
-                        break;
-                    case 1:
-                        this.Hide();
-                        i_k ink = new i_k();
-                        ink.Show();
-                        break;
-                    case 2:
-                        this.Hide();
-                        muhasebe mh = new muhasebe();
-                        mh.Show();
-                        break;
-                    case 3:
-                        this.Hide();
-                        ogrenci_isleri ogr = new ogrenci_isleri();
-                        ogr.Show();
-                        break;
-                    default:
-                        break;
-                }
+                Form1 fr = new Form1();
+                fr.Show();
             }
             else
             {
