@@ -12,26 +12,24 @@ namespace otomasyon
 {
     class DB
     {
-        private String dbName = "dershaneERP";
-        private String userName = "sa";
-        private String pass = "123";
-        private String dataSource = "SAMSUNG-SAMSUNG\\MSSQLSERVER1";
-        private SqlConnection con = null;
+        private String dataSource = "SEFA";
+        private String database = "dershaneERP";
+        private String userId = "";
+        private String pass = "";
+
+        SqlConnection con;
 
         public DB()
         {
-
             try
             {
-                con = new SqlConnection("Data Source=" + dataSource + ";Initial Catalog=" + dbName + ";Persist Security Info=False;User ID=" + userName + ";Password=" + pass + ";");
-
+                con = new SqlConnection("Initial Catalog = dershaneERP; Data Source= SEFA;Integrated Security=True;");
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show("Baglantu Hatası" + ex);
+                MessageBox.Show("Bağlantı tanımlama hatası");
+              
             }
-
         }
 
         public SqlConnection baglan()
@@ -46,7 +44,7 @@ namespace otomasyon
             catch (Exception ex)
             {
 
-                MessageBox.Show("Bağlantı açma hatası"+ ex);
+                MessageBox.Show("Bağlantı açma hatası");
             }
 
             return con;

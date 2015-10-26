@@ -8,20 +8,309 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Collections;
 
 namespace otomasyon
 {
-
     public partial class muhasebe : Form
     {
-        DB db = new DB();
         public muhasebe()
         {
             InitializeComponent();
         }
-        Dictionary<int, String> uye = new Dictionary<int, String>();
+        DB db = new DB();
         private void label6_Click(object sender, EventArgs e)
+        {
+          
+           
+        }
+        
+       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox4.Text.Equals("") || textBox5.Text.Equals("") || textBox1.Text.Equals(""))
+            {
+                MessageBox.Show("öğrenci bilgilerini eksiksiz giriniz!!");
+            }
+            else
+            {
+
+                dataGridView1.DataSource = null;
+                SqlCommand cm = new SqlCommand("ogrencibilgigetir", db.baglan());
+                cm.CommandType = CommandType.StoredProcedure;
+                SqlParameter a1 = new SqlParameter("@ogrencino", SqlDbType.Int);
+
+                a1.Direction = ParameterDirection.Input;
+
+                a1.Value = textBox4.Text;
+
+                cm.Parameters.Add(a1);
+
+                SqlParameter a2 = new SqlParameter("@ad", SqlDbType.VarChar, 50);
+
+                a2.Direction = ParameterDirection.Input;
+
+                a2.Value = textBox5.Text;
+
+                cm.Parameters.Add(a2);
+
+                SqlParameter a3 = new SqlParameter("@soyad", SqlDbType.VarChar, 50);
+
+                a3.Direction = ParameterDirection.Input;
+
+                a3.Value = textBox1.Text;
+
+                cm.Parameters.Add(a3);
+                SqlDataReader dr = cm.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+                dataGridView1.DataSource = dt;
+                db.kapat();
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox1.Text = "";
+            }
+        }
+        
+       
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int durum = -1;
+            SqlCommand cm = new SqlCommand("hesapguncelle", db.baglan());
+            cm.CommandType = CommandType.StoredProcedure;
+            SqlParameter a1 = new SqlParameter("@id", SqlDbType.Int);
+            a1.Direction = ParameterDirection.Input;
+            a1.Value = textBox9.Text;
+            cm.Parameters.Add(a1);
+
+            SqlParameter a2 = new SqlParameter("@odenmetarihi", SqlDbType.DateTime);
+            a2.Direction = ParameterDirection.Input;
+            a2.Value = dateTimePicker1.Value;
+            cm.Parameters.Add(a2);
+
+
+            SqlParameter a3 = new SqlParameter("@durum", SqlDbType.TinyInt);
+            a3.Direction = ParameterDirection.Input;
+            a3.Value = textBox7.Text;
+            cm.Parameters.Add(a3);
+
+            SqlParameter a4 = new SqlParameter("@aciklama", SqlDbType.VarChar, 500);
+            a4.Direction = ParameterDirection.Input;
+            a4.Value = textBox10.Text;
+            cm.Parameters.Add(a4);
+
+            SqlParameter a5 = new SqlParameter("@tutar", SqlDbType.Money);
+            a5.Direction = ParameterDirection.Input;
+            a5.Value = textBox8.Text;
+            cm.Parameters.Add(a5);
+
+            durum = cm.ExecuteNonQuery();
+
+            if (durum > 0)
+            {
+                MessageBox.Show("ödeme onayi");
+            }
+            else
+            {
+                MessageBox.Show("ödeme hatası!!!");
+            }
+            db.kapat();
+            textBox8.Text = "";
+            textBox7.Text = "";
+            textBox10.Text = "";
+
+            SqlCommand cmm = new SqlCommand("guncellenmistablo", db.baglan());
+            cmm.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = cmm.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dataGridView1.DataSource = dt;
+            db.kapat();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            PaintEventArgs pea = new PaintEventArgs(e.Graphics, new Rectangle(new Point(0, 0), this.Size));
+            this.InvokePaint(dataGridView1, pea);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            printDocument1.Print();
+        }
+
+       
+
+        
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox9.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            textBox8.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            textBox10.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            textBox7.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+           // dateTimePicker1.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Equals("") || textBox3.Text.Equals("") || textBox6.Text.Equals("") || !radioButton1.Checked.Equals(true) && !radioButton2.Checked.Equals(true))
+            {
+                MessageBox.Show("Seçiminizi kontrol ediniz");
+            }
+            else
+            {
+                if (radioButton1.Checked == true)
+                {
+                    int durum = 0;
+                    dataGridView2.DataSource = null;
+                    SqlCommand cm = new SqlCommand("Pesinatliodeme", db.baglan());
+                    cm.CommandType = CommandType.StoredProcedure;
+                    SqlParameter a1 = new SqlParameter("@ogrencino", SqlDbType.Int);
+
+                    a1.Direction = ParameterDirection.Input;
+
+                    a1.Value = textBox2.Text;
+
+                    cm.Parameters.Add(a1);
+
+                    SqlParameter a2 = new SqlParameter("@adi", SqlDbType.VarChar, 50);
+
+                    a2.Direction = ParameterDirection.Input;
+
+                    a2.Value = textBox3.Text;
+
+                    cm.Parameters.Add(a2);
+
+                    SqlParameter a3 = new SqlParameter("@soyad", SqlDbType.VarChar, 50);
+
+                    a3.Direction = ParameterDirection.Input;
+
+                    a3.Value = textBox6.Text;
+
+                    cm.Parameters.Add(a3);
+                    durum = cm.ExecuteNonQuery();
+
+                    db.kapat();
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox6.Text = "";
+
+                    SqlCommand cmm = new SqlCommand("pesinatliodemetablo", db.baglan());
+                    cm.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader dr = cmm.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(dr);
+                    dataGridView2.DataSource = dt;
+                    db.kapat();
+                }
+                else if (radioButton2.Checked == true)
+                {
+                    int durum = 0;
+                    dataGridView2.DataSource = null;
+                    SqlCommand cm = new SqlCommand("Pesinatsiz", db.baglan());
+                    cm.CommandType = CommandType.StoredProcedure;
+                    SqlParameter a1 = new SqlParameter("@ogrencino", SqlDbType.Int);
+
+                    a1.Direction = ParameterDirection.Input;
+
+                    a1.Value = textBox2.Text;
+
+                    cm.Parameters.Add(a1);
+
+                    SqlParameter a2 = new SqlParameter("@adi", SqlDbType.VarChar, 50);
+
+                    a2.Direction = ParameterDirection.Input;
+
+                    a2.Value = textBox3.Text;
+
+                    cm.Parameters.Add(a2);
+
+                    SqlParameter a3 = new SqlParameter("@soyad", SqlDbType.VarChar, 50);
+
+                    a3.Direction = ParameterDirection.Input;
+
+                    a3.Value = textBox6.Text;
+
+                    cm.Parameters.Add(a3);
+                    durum = cm.ExecuteNonQuery();
+
+                    db.kapat();
+
+                    SqlCommand cmmm = new SqlCommand("pesinatsizodemetablo", db.baglan());
+                    cmmm.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader dr = cmmm.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(dr);
+                    dataGridView2.DataSource = dt;
+                    db.kapat();
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox6.Text = "";
+                  
+                }
+            }
+        }
+
+        
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox14.Text = dataGridView3.CurrentRow.Cells[0].Value.ToString();
+            label19.Text = dataGridView3.CurrentRow.Cells[1].Value.ToString();
+            label20.Text = dataGridView3.CurrentRow.Cells[2].Value.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if ( textBox12.Text.Equals("") || textBox13.Text.Equals(""))
+            {
+                MessageBox.Show("Ad ve Soyadı Eksiksiz Giriniz!!");
+            }
+            else
+            {
+                dataGridView3.DataSource = null;
+                SqlCommand cm = new SqlCommand("ogrenciIdBul", db.baglan());
+                cm.CommandType = CommandType.StoredProcedure;
+                SqlParameter a1 = new SqlParameter("@adi", SqlDbType.VarChar, 50);
+                a1.Direction = ParameterDirection.Input;
+                a1.Value = textBox12.Text;
+                cm.Parameters.Add(a1);
+
+                SqlParameter a2 = new SqlParameter("@soyadi", SqlDbType.VarChar, 50);
+                a2.Direction = ParameterDirection.Input;
+                a2.Value = textBox13.Text;
+                cm.Parameters.Add(a2);
+
+                SqlParameter a3 = new SqlParameter("@tc", SqlDbType.VarChar, 11);
+                a3.Direction = ParameterDirection.Input;
+                a3.Value = textBox11.Text;
+                cm.Parameters.Add(a3);
+
+                SqlDataReader dr = cm.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(dr);
+                    dataGridView3.DataSource = dt;
+                    db.kapat();
+                  
+                    textBox11.Text = "";
+                    textBox12.Text = "";
+                    textBox13.Text = "";
+
+            }
+        }
+
+        private void Yazdır_Click(object sender, EventArgs e)
+        {
+            printDocument2.Print();
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            PaintEventArgs pea = new PaintEventArgs(e.Graphics, new Rectangle(new Point(0, 0), this.Size));
+            this.InvokePaint(dataGridView2, pea);
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
@@ -31,196 +320,16 @@ namespace otomasyon
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            dataGridView2.DataSource = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                SqlCommand cm = new SqlCommand("odemeKontroll", db.baglan());
-                SqlDataReader rd = cm.ExecuteReader();
-                dt.Load(rd);
-                dataGridView2.DataSource = dt;
-                MessageBox.Show("Ödeme için Gerekenleri Ara !");
+      
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("hata : " + ex);
-            }
-            db.kapat();
+       
 
-        }
+       
 
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
+    
 
-        }
-        ArrayList ar = new ArrayList();
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-
-
-
-            dataGridView1.DataSource = null;
-            try
-            {
-
-
-                SqlCommand cm = new SqlCommand("vadeal", db.baglan());
-                cm.CommandType = CommandType.StoredProcedure;
-                SqlParameter a1 = new SqlParameter("@ogrencino", SqlDbType.Int);
-
-                a1.Direction = ParameterDirection.Input;
-
-                a1.Value = textBox4.Text;
-
-                cm.Parameters.Add(a1);
-
-                SqlDataReader rd = cm.ExecuteReader();
-                rd.Read();
-
-                double para = Convert.ToDouble(rd["indirimliFiyat"]); //bölme işlemi olduğundan dolayı double kullanıldı
-                double vade = Convert.ToDouble(rd["vadeSayisi"]);
-                DateTime bugun = Convert.ToDateTime(rd["tarih"]); ;
-                MessageBox.Show("ajysha" + bugun);
-                double odenecek = para / vade;
-
-                DateTime odemegunu;
-
-                db.kapat();
-                for (int i = 0; i < vade; i++)
-                {
-                    odemeTaksit ns = new odemeTaksit();
-                    ns.Taksitno = Convert.ToString(i + 1);
-                    ns.TaksitTutari = Convert.ToString(odenecek);
-                    odemegunu = bugun.AddMonths(i + 1); // taksitlendirme bir sonraki ay başlıyor... Ör: Ocak'da satın alınan ürün taksidi Şubat ayından itibaren başlamakta 
-                    ns.OdemeGunu = odemegunu;
-                    if (odemegunu.DayOfWeek.ToString() == "Saturday") // Ödeme günü Cumartesi 'ne denk gelirse bir önceki günü göster ödemeyi yaptır
-                    {
-                        odemegunu = odemegunu.AddDays(-1);
-                        ns.OdemeGunu = odemegunu;
-                    }
-                    else if (odemegunu.DayOfWeek.ToString() == "Sunday") // Ödeme günü Pazar'a denk gelirse bir sonraki günü göster ödemeyi yaptır
-                    {
-                        odemegunu = odemegunu.AddDays(1);
-                        ns.OdemeGunu = odemegunu;
-                    }
-
-                    //ar.Add(odemegunu.ToLongDateString());
-                    ar.Add(ns);
-
-                }
-
-
-                SqlCommand cmm = new SqlCommand("");
-
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Taksitlendirme Hatası : " + ex);
-            }
-
-            dataGridView1.DataSource = null;
-            try
-            {
-                SqlCommand cm = new SqlCommand("gelirgetir", db.baglan());
-                cm.CommandType = CommandType.StoredProcedure;
-                SqlParameter a1 = new SqlParameter("@ogrencino", SqlDbType.Int);
-
-                a1.Direction = ParameterDirection.Input;
-
-                a1.Value = textBox4.Text;
-
-                cm.Parameters.Add(a1);
-                SqlParameter a2 = new SqlParameter("@satisid", SqlDbType.Int);
-
-                a2.Direction = ParameterDirection.Input;
-
-                a2.Value = textBox1.Text;
-
-                cm.Parameters.Add(a2);
-
-                SqlDataReader rd = cm.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(rd);
-                dataGridView1.DataSource = dt;
-
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Dataagetir hatası : " + ex);
-            }
-
-        }
-
-        private void muhasebe_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                SqlCommand cm = new SqlCommand("taksitebol", db.baglan());
-                SqlDataReader rd = cm.ExecuteReader();
-                MessageBox.Show("taksitlendi.");
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("hata : " + ex);
-            }
-            db.kapat();
-
-            SqlCommand cmm = new SqlCommand("vadeal", db.baglan());
-            cmm.CommandType = CommandType.StoredProcedure;
-            SqlParameter a1 = new SqlParameter("@ogrencino", SqlDbType.Int);
-
-            a1.Direction = ParameterDirection.Input;
-
-            a1.Value = textBox4.Text;
-
-            cmm.Parameters.Add(a1);
-
-            SqlDataReader rdd = cmm.ExecuteReader();
-            rdd.Read();
-
-            double para = Convert.ToDouble(rdd["indirimliFiyat"]); //bölme işlemi olduğundan dolayı double kullanıldı
-            double vade = Convert.ToDouble(rdd["vadeSayisi"]);
-            DateTime bugun = Convert.ToDateTime(rdd["tarih"]);
-            db.kapat();
-            DateTime odemegunu;
-
-
-            for (int i = 0; i < vade; i++)
-            {
-                odemeTaksit ns = new odemeTaksit();
-
-
-                odemegunu = bugun.AddMonths(i + 1); // taksitlendirme bir sonraki ay başlıyor... Ör: Ocak'da satın alınan ürün taksidi Şubat ayından itibaren başlamakta 
-
-                if (odemegunu.DayOfWeek.ToString() == "Saturday") // Ödeme günü Cumartesi 'ne denk gelirse bir önceki günü göster ödemeyi yaptır
-                {
-                    odemegunu = odemegunu.AddDays(-1);
-                    ns.OdemeGunu = odemegunu;
-                }
-                else if (odemegunu.DayOfWeek.ToString() == "Sunday") // Ödeme günü Pazar'a denk gelirse bir sonraki günü göster ödemeyi yaptır
-                {
-                    odemegunu = odemegunu.AddDays(1);
-                    ns.OdemeGunu = odemegunu;
-                }
-
-            }
-        }
-    }
+     }
+        
 }
+ 
+

@@ -1,37 +1,152 @@
-OdemeKOntrolü
-
 USE [dershaneERP]
 GO
-/****** Object:  StoredProcedure [dbo].[odemeKontroll]    Script Date: 26.10.2015 17:03:28 ******/
+/****** Object:  StoredProcedure [dbo].[guncellenmistablo]    Script Date: 26.10.2015 14:47:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER procedure [dbo].[odemeKontroll]
+ALTER procedure [dbo].[guncellenmistablo]
 as
 begin
-select g.satisId, g.taksitno, g.tutar, g.odenmetarihi, g.odemetarihi, g.durum, g.aciklama, ogr.telefon, ogr.veliTel from gelirler as g left join satis as s on g.satisId=s.id left join gorusme as gr on s.gorusmeId=gr.id left join ogrenciProfil as ogr on ogr.id=gr.ogrenciProfilId  where GETDATE()>odemetarihi+10 and (durum !=1 or durum is null)
-
+select  g.id,g.taksitno,g.odemetarihi,g.odenmetarihi,g.tutar,g.durum,g.aciklama from gelirler as g
 end
-
-Trigger-Görüþmeden bilgileri satis ve gelirlere yazmak
+*****************************************
 USE [dershaneERP]
 GO
-/****** Object:  Trigger [dbo].[fiyatal]    Script Date: 26.10.2015 17:04:51 ******/
+/****** Object:  StoredProcedure [dbo].[hesapguncelle]    Script Date: 26.10.2015 14:48:03 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER trigger [dbo].[fiyatal] on [dbo].[gorusme] after insert
-As
-Begin
-Declare @sonuc int, @fiyat money, @tarih datetime, @gorusmeid int, @personelid int, @derssaat varchar(50), @satis int
-Select @sonuc=sonuc, @fiyat=sonFiyat, @tarih=tarih, @gorusmeid=id, @personelid=personelId, @derssaat=dersSaatleri from inserted  --gorusmede sonucu al
-
-if(@sonuc=0)
+ALTER procedure [dbo].[hesapguncelle]
+@odenmetarihi datetime,
+@tutar money,
+@aciklama varchar (500),
+@durum tinyint,
+@id int
+as
 begin
-insert into satis (personelId,gorusmeId, dersSaatleri) values(@personelid, @gorusmeid, @derssaat)
-select @satis=(MAX(id)) from satis
-insert into gelirler (tutar, odemetarihi, satisId) values (@fiyat, @tarih, @satis)
+update gelirler set odenmetarihi=@odenmetarihi, tutar=@tutar,aciklama=@aciklama,durum=@durum where id=@id 
 end
+******************************************
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[ogrencibilgigetir]    Script Date: 26.10.2015 14:48:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[ogrencibilgigetir]
+@ogrencino int,
+@ad varchar (50),
+@soyad varchar (50)
+as
+begin
+select g.id,g.taksitno,g.odemetarihi,g.odenmetarihi,g.tutar,g.durum,g.aciklama from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gors on gors.id=s.gorusmeId left join ogrenciProfil as op on op.id=gors.ogrenciProfilId where op.id=@ogrencino and op.adi=@ad and op.soyadi=@soyad
+end
+****************************************
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[ogrenciIdBul]    Script Date: 26.10.2015 14:48:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[ogrenciIdBul]
+@adi varchar (50),
+@soyadi varchar (50),
+@tc varchar(11)
+
+as
+begin
+declare @durum tinyint
+
+set @durum=0
+select ogrprf.id,ogrprf.adi,ogrprf.soyadi,ogrprf.tcno,ogrprf.dogumTarihi,ogrprf.telefon,ogrprf.veliAdi,ogrprf.veliSoyadi,ogrprf.veliTel from gorusme as g left join ogrenciProfil as ogrprf on ogrprf.id=g.ogrenciProfilId where g.sonuc=@durum and ogrprf.adi=@adi and ogrprf.soyadi=@soyadi or ogrprf.tcno=@tc
+
+end
+*********************************
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[Pesinatliodeme]    Script Date: 26.10.2015 14:48:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER procedure [dbo].[Pesinatliodeme]
+@ogrencino int,
+@adi varchar (50),
+@soyad varchar (50)
+as
+begin
+declare @satisid int, @vade int, @cnt int
+declare @tarih dateTime
+declare @tutar money, @taksitmiktari money
+set @cnt=1
+select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih,@tutar=gor.sonFiyat from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
+while (@cnt<@vade+1)
+begin
+set @tarih = DATEADD(month, @cnt-1,CURRENT_TIMESTAMP)
+set @taksitmiktari = @tutar/@vade
+--select DATEADD(@tarih,@cnt,CURRENT_TIMESTAMP)
+insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @cnt, @tarih,@taksitmiktari)
+set @cnt+=1
+end
+end
+***************************
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[pesinatliodemetablo]    Script Date: 26.10.2015 14:48:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[pesinatliodemetablo]
+as
+begin
+select g.id,g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g
+end
+***********************************
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[Pesinatsiz]    Script Date: 26.10.2015 14:49:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER procedure [dbo].[Pesinatsiz]
+@ogrencino int,
+@adi varchar(50),
+@soyad varchar (50)
+as
+begin
+declare @satisid int, @vade int, @cnt int
+declare @tarih dateTime
+declare @tutar money, @taksittutari money
+set @cnt=1
+select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih, @tutar=gor.sonFiyat from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
+while (@cnt<@vade+1)
+begin
+set @tarih = DATEADD(month, @cnt,CURRENT_TIMESTAMP)
+set @taksittutari =@tutar/@vade
+insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @cnt, @tarih,@taksittutari)
+set @cnt+=1
+end
+end
+*****************************************
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[pesinatsizodemetablo]    Script Date: 26.10.2015 14:49:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[pesinatsizodemetablo]
+as
+begin
+select  g.id,g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g
 end

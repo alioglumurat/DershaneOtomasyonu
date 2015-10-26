@@ -6,26 +6,32 @@ using System.Threading.Tasks;
 
 namespace otomasyon
 {
-    class odemeTaksit
+    class taksitode
     {
+        private int id;
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         private String taksitno;
-        
-
-public String Taksitno
-{
-  get { return taksitno; }
-  set { taksitno = value; }
-}
 
 
-private String taksitTutari;
+        public String Taksitno
+        {
+            get { return taksitno; }
+            set { taksitno = value; }
+        }
 
-public String TaksitTutari
-{
-    get { return taksitTutari; }
-    set { taksitTutari = value; }
-}
+
+        private String taksitTutari;
+
+        public String TaksitTutari
+        {
+            get { return taksitTutari; }
+            set { taksitTutari = value; }
+        }
 
         private DateTime odemeGunu;
 
