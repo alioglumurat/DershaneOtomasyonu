@@ -1,27 +1,37 @@
-calisanGetir --- sistemde tanimli olan admin disinda ki tüm kullanicilari getirir.
-------------PROCEDURE-----------------
+OdemeKOntrolü
 
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[odemeKontroll]    Script Date: 26.10.2015 17:03:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[odemeKontroll]
+as
+begin
+select g.satisId, g.taksitno, g.tutar, g.odenmetarihi, g.odemetarihi, g.durum, g.aciklama, ogr.telefon, ogr.veliTel from gelirler as g left join satis as s on g.satisId=s.id left join gorusme as gr on s.gorusmeId=gr.id left join ogrenciProfil as ogr on ogr.id=gr.ogrenciProfilId  where GETDATE()>odemetarihi+10 and (durum !=1 or durum is null)
 
-dersGetir --- derslerin listesini getiren bir procedure.
+end
 
-dersSaatigetir ---   seçilen dersin saatini getiren procedure.
+Trigger-Görüþmeden bilgileri satis ve gelirlere yazmak
+USE [dershaneERP]
+GO
+/****** Object:  Trigger [dbo].[fiyatal]    Script Date: 26.10.2015 17:04:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER trigger [dbo].[fiyatal] on [dbo].[gorusme] after insert
+As
+Begin
+Declare @sonuc int, @fiyat money, @tarih datetime, @gorusmeid int, @personelid int, @derssaat varchar(50), @satis int
+Select @sonuc=sonuc, @fiyat=sonFiyat, @tarih=tarih, @gorusmeid=id, @personelid=personelId, @derssaat=dersSaatleri from inserted  --gorusmede sonucu al
 
-users-- sistemde kayitli olan kullanici listesi procedure.
-
-userSave-- sisteme kullanici kayit eden procedure
-
-degis --- personel bilgilerini kayit eder.
-
-gorusmeKaydet--- yapilan görüsmeyi kaydeder.
-
-rapor--- yapilan satislarin raporunu getirir. seçilen yil, ay ve satis yapan kisinin isim soyismine göre basarili,basarisiz veya ihtimalli satislari getirir.
-
-
-----------------FUNCTION-----------
-
-dersIDGetir  --- seçilen dersin ID sini getirir.
-perID --- seçilen username in ID sini getirir.
-saatUcreti -- seçilen dersin saat ücretini getirir.
-wer---- sisteme giris yapan kullanicinin profil bilgilerinin kayitli olma durumunu kontrol eder.
-toplamDersSaati ----- seçilen dersin sistemde kayitli olan saat sayisini getirir.
-
+if(@sonuc=0)
+begin
+insert into satis (personelId,gorusmeId, dersSaatleri) values(@personelid, @gorusmeid, @derssaat)
+select @satis=(MAX(id)) from satis
+insert into gelirler (tutar, odemetarihi, satisId) values (@fiyat, @tarih, @satis)
+end
+end

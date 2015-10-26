@@ -44,11 +44,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 362);
+            this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.label1);
             this.Name = "ogrenci_isleri";
             this.Text = "ogrenci_isleri";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ogrenci_isleri_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
