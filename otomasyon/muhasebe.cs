@@ -19,9 +19,12 @@ namespace otomasyon
 
         private void muhasebe_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            Form1 fr = new Form1();
-            fr.Show();
+            Application.Exit();
+        }
+
+        private void muhasebe_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

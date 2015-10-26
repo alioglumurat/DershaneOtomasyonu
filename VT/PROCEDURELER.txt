@@ -1,61 +1,27 @@
+calisanGetir --- sistemde tanimli olan admin disinda ki tüm kullanicilari getirir.
+------------PROCEDURE-----------------
+
+
 dersGetir --- derslerin listesini getiren bir procedure.
+
 dersSaatigetir ---   seçilen dersin saatini getiren procedure.
+
 users-- sistemde kayitli olan kullanici listesi procedure.
+
 userSave-- sisteme kullanici kayit eden procedure
 
+degis --- personel bilgilerini kayit eder.
+
+gorusmeKaydet--- yapilan görüsmeyi kaydeder.
+
+rapor--- yapilan satislarin raporunu getirir. seçilen yil, ay ve satis yapan kisinin isim soyismine göre basarili,basarisiz veya ihtimalli satislari getirir.
 
 
-function ---
-fiyatGetir : seçilen dersin saatlik ücretini getiren function.
+----------------FUNCTION-----------
 
+dersIDGetir  --- seçilen dersin ID sini getirir.
+perID --- seçilen username in ID sini getirir.
+saatUcreti -- seçilen dersin saat ücretini getirir.
+wer---- sisteme giris yapan kullanicinin profil bilgilerinin kayitli olma durumunu kontrol eder.
+toplamDersSaati ----- seçilen dersin sistemde kayitli olan saat sayisini getirir.
 
-Cihan - Sýnýflar iþlemleri baþlangýç ------
-
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[sinifekle]    Script Date: 23.10.2015 16:19:08 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[sinifekle] 
-@adi varchar(500) , @kapasite tinyint , @aciklama varchar (500) , @tarih datetime
- as begin
-insert into siniflar (adi,kapasite,aciklama,tarih) values (@adi,@kapasite,@aciklama,@tarih)
-end
-
-
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[sinifguncelle]    Script Date: 23.10.2015 16:19:57 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[sinifguncelle] 
-@id int,
-@adi varchar (500),
-@kapasite tinyint,
-@aciklama varchar(500),
-@tarih datetime
-as
-begin
-update siniflar set 
-adi=@adi, kapasite=@kapasite,aciklama=@aciklama, tarih=@tarih
-where id=@id
-end
-
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[sinifsil]    Script Date: 23.10.2015 16:20:06 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[sinifsil]
-@sid int
-as 
-delete from siniflar where id=@sid
-
-
-Cihan - Sýnýflar iþlemleri Bitiþ------
