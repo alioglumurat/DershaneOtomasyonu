@@ -60,6 +60,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="grupEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="grupEkle.Designer.cs">
+      <DependentUpon>grupEkle.cs</DependentUpon>
+    </Compile>
     <Compile Include="i_k.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="grupEkle.resx">
+      <DependentUpon>grupEkle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="i_k.resx">
       <DependentUpon>i_k.cs</DependentUpon>

@@ -80,3 +80,22 @@ C:\Users\Omer\Desktop\New folder\otomasyon\obj\Debug\otomasyon.personelEkle.reso
 C:\Users\Omer\Desktop\New folder\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
 C:\Users\Omer\Desktop\New folder\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
 C:\Users\Omer\Desktop\New folder\otomasyon\obj\Debug\otomasyon.satisRaporlari.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.i_k.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.i_k_satisSonAdim.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.personelEkle.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.satisRaporlari.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form2.resources
+C:\Users\ELİF\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.grupEkle.resources
