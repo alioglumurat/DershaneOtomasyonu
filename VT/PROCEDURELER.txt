@@ -1,0 +1,34 @@
+calisanGetir --- sistemde tanimli olan admin disinda ki tüm kullanicilari getirir.
+------------PROCEDURE-----------------
+
+
+dersGetir --- derslerin listesini getiren bir procedure.
+
+dersSaatigetir ---   seçilen dersin saatini getiren procedure.
+
+users-- sistemde kayitli olan kullanici listesi procedure.
+
+userSave-- sisteme kullanici kayit eden procedure
+
+degis --- personel bilgilerini kayit eder.
+
+gorusmeKaydet--- yapilan görüsmeyi kaydeder.
+
+rapor--- yapilan satislarin raporunu getirir. seçilen yil, ay ve satis yapan kisinin isim soyismine göre basarili,basarisiz veya ihtimalli satislari getirir.
+
+ogrenciEklee--- yeni öðrenci kayýt eden procedure
+
+ogrenciSil--- kayýtlý olan öðrenci silen procedure
+
+ogrenciGuncel--- öðrencide yanlýþ girilen bilgiyi düzenleme yapan procedure
+
+liste--- datagridviewde tüm öðrencileri getiren procedure
+
+----------------FUNCTION-----------
+
+dersIDGetir  --- seçilen dersin ID sini getirir.
+perID --- seçilen username in ID sini getirir.
+saatUcreti -- seçilen dersin saat ücretini getirir.
+wer---- sisteme giris yapan kullanicinin profil bilgilerinin kayitli olma durumunu kontrol eder.
+toplamDersSaati ----- seçilen dersin sistemde kayitli olan saat sayisini getirir.
+maxId--- en son kayýt edilen öðrencinin ID getiren function.
