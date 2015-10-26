@@ -1,0 +1,40 @@
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[DersEkle]    Script Date: 22.10.2015 16:45:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[DersEkle]
+@DersAdi varchar (500),
+@saatUcreti money,
+@VadeFarký  float,
+@tarih datetime,
+@toplamSaat tinyint
+as 
+begin
+insert into dersler (dersAdi,saatUcreti,toplamSaat,vadeFarki,tarih) values (@DersAdi ,@saatUcreti,@toplamSaat,@VadeFarký ,@tarih)
+end
+
+
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[DersSil]    Script Date: 22.10.2015 16:46:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[DersSil]
+@id INT        
+AS 
+DELETE  FROM   dersler WHERE id 
+
+
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[DersDüzenle]    Script Date: 22.10.2015 16:41:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER  PROCEDURE [dbo].[DersDüzenle]

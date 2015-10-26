@@ -1,0 +1,48 @@
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe.config
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csprojResolveAssemblyReference.cache
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Form1.resources
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Properties.Resources.resources
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csproj.GenerateResource.Cache
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\bin\Debug\SaatEkle.pdb
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\obj\Debug\SaatEkle.exe
+c:\users\lenovo\documents\visual studio 2012\Projects\SaatEkle\SaatEkle\obj\Debug\SaatEkle.pdb
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe.config
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.exe
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.pdb
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csprojResolveAssemblyReference.cache
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Form1.resources
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Properties.Resources.resources
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csproj.GenerateResource.Cache
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe
+C:\Users\BP14\Desktop\dersane proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.pdb
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe.config
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.exe
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.pdb
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\bin\Debug\SaatEkle.pdb
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Form1.resources
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Properties.Resources.resources
+C:\Users\lenovo\Desktop\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csproj.GenerateResource.Cache
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe.config
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.exe
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.pdb
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\bin\Debug\SaatEkle.pdb
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csprojResolveAssemblyReference.cache
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Form1.resources
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Properties.Resources.resources
+E:\Yeni klasör (2)\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csproj.GenerateResource.Cache
+G:\Sinan Dersane Proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe.config
+G:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.exe
+G:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.pdb
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe.config
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.exe
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.pdb
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.exe
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\bin\Debug\SaatEkle.pdb
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csprojResolveAssemblyReference.cache
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Form1.resources
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.Properties.Resources.resources
+E:\Sinan Dersane Proje\SaatEkle\SaatEkle\obj\Debug\SaatEkle.csproj.GenerateResource.Cache

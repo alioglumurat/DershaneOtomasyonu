@@ -1,0 +1,55 @@
+SE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[SaatEkle]    Script Date: 22.10.2015 02:57:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[SaatEkle]
+@gun tinyint ,
+@baslamaSaati  time(7),
+@bitisSaati  time(7)
+as 
+begin
+insert into saatler(gun,baslamaSaati,bitisSaati) values (@gun ,@baslamaSaati,@bitisSaati)
+end
+
+
+
+
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[SaatSil]    Script Date: 22.10.2015 02:57:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[SaatSil]
+@id INT        
+AS 
+DELETE  FROM   saatler WHERE id = @id
+
+
+
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[SaatDüzenle]    Script Date: 22.10.2015 02:58:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER  PROCEDURE [dbo].[SaatDüzenle]
+    @id int,
+    @gun tinyint = NULL,
+    @baslamaSaati time(7) = NULL,
+    @bitisSaati time(7) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE saatler
+    SET gun=@gun, baslamaSaati=@baslamaSaati, bitisSaati=@bitisSaati
+    WHERE id=@id
+END
+
+
