@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "admin_panel";
             this.Text = "admin_panel";
+            this.Load += new System.EventHandler(this.admin_panel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

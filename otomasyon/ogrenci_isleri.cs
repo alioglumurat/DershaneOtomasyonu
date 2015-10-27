@@ -16,5 +16,10 @@ namespace otomasyon
         {
             InitializeComponent();
         }
+
+        private void ogrenci_isleri_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -72,7 +72,6 @@
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(127, 20);
             this.txt_username.TabIndex = 2;
-            this.txt_username.Text = "m";
             // 
             // txt_userpass
             // 
@@ -81,7 +80,6 @@
             this.txt_userpass.PasswordChar = '*';
             this.txt_userpass.Size = new System.Drawing.Size(127, 20);
             this.txt_userpass.TabIndex = 2;
-            this.txt_userpass.Text = "1";
             // 
             // button1
             // 
@@ -105,9 +103,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_giris);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

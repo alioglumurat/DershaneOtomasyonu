@@ -22,5 +22,10 @@ namespace otomasyon
             Form1 fr = new Form1();
             fr.Show();
         }
+
+        private void insan_kaynaklari_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

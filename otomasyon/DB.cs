@@ -12,10 +12,10 @@ namespace otomasyon
 {
     class DB
     {
-        private String dataSource = "SEFA";
+        private String dataSource = ".";
         private String database = "dershaneERP";
-        private String userId = "";
-        private String pass = "";
+        private String userId = "sa";
+        private String pass = "12345";
 
         SqlConnection con;
 
@@ -23,11 +23,11 @@ namespace otomasyon
         {
             try
             {
-                con = new SqlConnection("Initial Catalog = dershaneERP; Data Source= SEFA;Integrated Security=True;");
+                con = new SqlConnection("Data Source="+dataSource+"; Database="+database+"; Persist Security Info=False; User ID="+userId+"; Password="+pass+"");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bağlantı tanımlama hatası");
+                MessageBox.Show("Bağlantı tanımlama hatası"+ex);
               
             }
         }
@@ -162,6 +162,82 @@ namespace otomasyon
         
             return sb.ToString();
         }
+
+
+        public SqlDataReader ozdatagetir(String prcadi)
+        {
+            SqlDataReader oku = null;
+            try
+            {
+                SqlCommand cm = new SqlCommand(prcadi, baglan());
+                cm.CommandType = CommandType.StoredProcedure;
+                oku = cm.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Data getirme haatsı" + ex);
+
+            }
+
+            return oku;
+
+        }
+
+
+        public int ozdataekle(String adi, int adet, int personelid, int fiyat, String lokasyon, String aciklama)
+        {
+            int sayi = 0;
+
+            try
+            {
+                SqlCommand islem = new SqlCommand("demirbasdataekle", baglan());
+                islem.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter a = new SqlParameter("adi", SqlDbType.VarChar, 500);
+                a.Direction = ParameterDirection.Input;
+                a.Value = adi;
+                islem.Parameters.Add(a);
+
+                SqlParameter b = new SqlParameter("adet", SqlDbType.TinyInt);
+                b.Direction = ParameterDirection.Input;
+                b.Value = adet;
+                islem.Parameters.Add(b);
+
+                SqlParameter c = new SqlParameter("personelid", SqlDbType.Int);
+                c.Direction = ParameterDirection.Input;
+                c.Value = personelid;
+                islem.Parameters.Add(c);
+
+                SqlParameter d = new SqlParameter("fiyat", SqlDbType.Money);
+                d.Direction = ParameterDirection.Input;
+                d.Value = fiyat;
+                islem.Parameters.Add(d);
+
+
+                SqlParameter e = new SqlParameter("lokasyon", SqlDbType.VarChar, 500);
+                e.Direction = ParameterDirection.Input;
+                e.Value = lokasyon;
+                islem.Parameters.Add(e);
+
+                SqlParameter f = new SqlParameter("aciklama", SqlDbType.VarChar, 500);
+                f.Direction = ParameterDirection.Input;
+                f.Value = aciklama;
+                islem.Parameters.Add(f);
+
+                sayi = islem.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Data ekleme hatası" + ex);
+            }
+
+            return sayi;
+        }
+
+
 
     }
 }

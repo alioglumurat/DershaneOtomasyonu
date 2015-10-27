@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ogrenci_isleri";
             this.Text = "ogrenci_isleri";
+            this.Load += new System.EventHandler(this.ogrenci_isleri_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

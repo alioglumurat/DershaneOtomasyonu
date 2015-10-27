@@ -49,6 +49,7 @@
             this.Name = "insan_kaynaklari";
             this.Text = "insan_kaynaklari";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.insan_kaynaklari_FormClosed);
+            this.Load += new System.EventHandler(this.insan_kaynaklari_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

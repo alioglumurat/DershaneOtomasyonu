@@ -1,152 +1,72 @@
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[guncellenmistablo]    Script Date: 26.10.2015 14:47:52 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[guncellenmistablo]
+ALTER procedure [dbo].[demirbasdataekle]
+@adi varchar(500),
+@adet tinyint,
+@personelid int,
+@fiyat money,
+@lokasyon varchar(500),
+@aciklama varchar(500)
+
 as
 begin
-select  g.id,g.taksitno,g.odemetarihi,g.odenmetarihi,g.tutar,g.durum,g.aciklama from gelirler as g
+
+insert into demirbas (adi,adet,personelId,fiyat,lokasyon,aciklama) values(@adi,@adet,@personelid,@fiyat,@lokasyon,@aciklama)
+
 end
-*****************************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[hesapguncelle]    Script Date: 26.10.2015 14:48:03 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[hesapguncelle]
-@odenmetarihi datetime,
-@tutar money,
-@aciklama varchar (500),
-@durum tinyint,
+************************************************************************************************
+
+ALTER procedure [dbo].[demirbasdatagetir]
+as
+begin
+
+select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p left join demirbas as d on d.personelId=p.id
+
+end
+********************************************************************************************************
+
+ALTER procedure [dbo].[demirbasdataguncelle]
+@id int,
+@adi varchar(500),
+@adet tinyint,
+@personelid int,
+@fiyat money,
+@lokasyon varchar(500),
+@aciklama varchar(500)
+as
+begin
+
+
+update demirbas set adi=@adi,adet=@adet,personelId=@personelid,fiyat=@fiyat,lokasyon=@lokasyon,aciklama=@aciklama where id=@id
+
+end
+
+****************************************************************************************************************
+
+ALTER procedure [dbo].[demirbasdatasil]
 @id int
-as
-begin
-update gelirler set odenmetarihi=@odenmetarihi, tutar=@tutar,aciklama=@aciklama,durum=@durum where id=@id 
-end
-******************************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[ogrencibilgigetir]    Script Date: 26.10.2015 14:48:19 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[ogrencibilgigetir]
-@ogrencino int,
-@ad varchar (50),
-@soyad varchar (50)
-as
-begin
-select g.id,g.taksitno,g.odemetarihi,g.odenmetarihi,g.tutar,g.durum,g.aciklama from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gors on gors.id=s.gorusmeId left join ogrenciProfil as op on op.id=gors.ogrenciProfilId where op.id=@ogrencino and op.adi=@ad and op.soyadi=@soyad
-end
-****************************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[ogrenciIdBul]    Script Date: 26.10.2015 14:48:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[ogrenciIdBul]
-@adi varchar (50),
-@soyadi varchar (50),
-@tc varchar(11)
 
 as
 begin
-declare @durum tinyint
 
-set @durum=0
-select ogrprf.id,ogrprf.adi,ogrprf.soyadi,ogrprf.tcno,ogrprf.dogumTarihi,ogrprf.telefon,ogrprf.veliAdi,ogrprf.veliSoyadi,ogrprf.veliTel from gorusme as g left join ogrenciProfil as ogrprf on ogrprf.id=g.ogrenciProfilId where g.sonuc=@durum and ogrprf.adi=@adi and ogrprf.soyadi=@soyadi or ogrprf.tcno=@tc
+delete from demirbas where id=@id
 
 end
-*********************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[Pesinatliodeme]    Script Date: 26.10.2015 14:48:44 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 
+**************************************************************************************************
 
-ALTER procedure [dbo].[Pesinatliodeme]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
+ALTER procedure [dbo].[demirbasara]
+@ara varchar(50)
 as
 begin
-declare @satisid int, @vade int, @cnt int
-declare @tarih dateTime
-declare @tutar money, @taksitmiktari money
-set @cnt=1
-select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih,@tutar=gor.sonFiyat from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-while (@cnt<@vade+1)
-begin
-set @tarih = DATEADD(month, @cnt-1,CURRENT_TIMESTAMP)
-set @taksitmiktari = @tutar/@vade
---select DATEADD(@tarih,@cnt,CURRENT_TIMESTAMP)
-insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @cnt, @tarih,@taksitmiktari)
-set @cnt+=1
-end
-end
-***************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[pesinatliodemetablo]    Script Date: 26.10.2015 14:48:59 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[pesinatliodemetablo]
-as
-begin
-select g.id,g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g
-end
-***********************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[Pesinatsiz]    Script Date: 26.10.2015 14:49:11 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 
+select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p  left join demirbas as d on d.personelId=p.id where ((contains((p.adi,p.soyadi),@ara) or contains((d.adi),@ara)))
 
-ALTER procedure [dbo].[Pesinatsiz]
-@ogrencino int,
-@adi varchar(50),
-@soyad varchar (50)
+end
+
+**********************************************************************************************
+
+ALTER procedure [dbo].[demirbasveriguncelle]
 as
 begin
-declare @satisid int, @vade int, @cnt int
-declare @tarih dateTime
-declare @tutar money, @taksittutari money
-set @cnt=1
-select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih, @tutar=gor.sonFiyat from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-while (@cnt<@vade+1)
-begin
-set @tarih = DATEADD(month, @cnt,CURRENT_TIMESTAMP)
-set @taksittutari =@tutar/@vade
-insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @cnt, @tarih,@taksittutari)
-set @cnt+=1
+select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p left join demirbas as d on d.personelId=p.id
 end
-end
-*****************************************
-USE [dershaneERP]
-GO
-/****** Object:  StoredProcedure [dbo].[pesinatsizodemetablo]    Script Date: 26.10.2015 14:49:24 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[pesinatsizodemetablo]
-as
-begin
-select  g.id,g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g
-end
+******************************************************************************************************
