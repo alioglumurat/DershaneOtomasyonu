@@ -16,10 +16,5 @@ namespace otomasyon
         {
             InitializeComponent();
         }
-
-        private void admin_panel_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

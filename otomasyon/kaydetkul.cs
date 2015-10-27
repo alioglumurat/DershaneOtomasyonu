@@ -39,10 +39,5 @@ namespace otomasyon
             frm.Show();
 
         }
-
-        private void kaydetkul_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

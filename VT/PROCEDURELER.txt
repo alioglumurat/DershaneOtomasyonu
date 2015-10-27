@@ -1,72 +1,18 @@
-ALTER procedure [dbo].[demirbasdataekle]
-@adi varchar(500),
-@adet tinyint,
-@personelid int,
-@fiyat money,
-@lokasyon varchar(500),
-@aciklama varchar(500)
-
+USE [dershaneERP]
+GO
+/****** Object:  StoredProcedure [dbo].[tanimaKayit]    Script Date: 27.10.2015 15:05:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[tanimaKayit]
+@adi varchar(50),
+@soyadi varchar(50),
+@telefon varchar(50),
+@mail varchar(255),
+@ilgilendigiAlan varchar(500),
+@ilgilendigiDers varchar(500)
 as
 begin
-
-insert into demirbas (adi,adet,personelId,fiyat,lokasyon,aciklama) values(@adi,@adet,@personelid,@fiyat,@lokasyon,@aciklama)
-
+insert into bulten (Adi, Soyadi, Telefon, Mail, ilgilendigiAlan, ilgilendigiDers) values (@adi, @soyadi, @telefon,@mail,@ilgilendigiAlan,@ilgilendigiDers)
 end
-************************************************************************************************
-
-ALTER procedure [dbo].[demirbasdatagetir]
-as
-begin
-
-select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p left join demirbas as d on d.personelId=p.id
-
-end
-********************************************************************************************************
-
-ALTER procedure [dbo].[demirbasdataguncelle]
-@id int,
-@adi varchar(500),
-@adet tinyint,
-@personelid int,
-@fiyat money,
-@lokasyon varchar(500),
-@aciklama varchar(500)
-as
-begin
-
-
-update demirbas set adi=@adi,adet=@adet,personelId=@personelid,fiyat=@fiyat,lokasyon=@lokasyon,aciklama=@aciklama where id=@id
-
-end
-
-****************************************************************************************************************
-
-ALTER procedure [dbo].[demirbasdatasil]
-@id int
-
-as
-begin
-
-delete from demirbas where id=@id
-
-end
-
-**************************************************************************************************
-
-ALTER procedure [dbo].[demirbasara]
-@ara varchar(50)
-as
-begin
-
-select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p  left join demirbas as d on d.personelId=p.id where ((contains((p.adi,p.soyadi),@ara) or contains((d.adi),@ara)))
-
-end
-
-**********************************************************************************************
-
-ALTER procedure [dbo].[demirbasveriguncelle]
-as
-begin
-select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p left join demirbas as d on d.personelId=p.id
-end
-******************************************************************************************************
