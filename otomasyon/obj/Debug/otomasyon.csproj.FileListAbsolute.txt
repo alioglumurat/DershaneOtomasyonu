@@ -12,12 +12,23 @@ C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debu
 C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
 C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debug\otomasyon.muhasebe.resources
 C:\Users\Omer\Documents\Visual Studio 2015\Projects\otomasyon\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
+G:\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
+G:\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
+G:\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
+G:\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
-C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
-C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
-C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
@@ -26,48 +37,26 @@ C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muh
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
 C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
-C:\Users\SAMSUNG\Desktop\otomasyon1\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.tanima.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.tanima.resources
-C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
+C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
+C:\Users\Sefa Senol\Desktop\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
+C:\Users\Sefa Senol\Desktop\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
+D:\yedek otomasyon\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
+D:\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+D:\yedek otomasyon\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
 C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
 C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
 C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.tanima.resources
-C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
