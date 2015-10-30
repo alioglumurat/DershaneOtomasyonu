@@ -56,3 +56,18 @@ C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyo
 C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
 C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.tanima.resources
 C:\Users\SAMSUNG\Desktop\tanisma\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe.config
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.exe
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.pdb
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.exe
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\bin\Debug\otomasyon.pdb
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csprojResolveAssemblyReference.cache
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.admin_panel.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Form1.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.insan_kaynaklari.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.kaydetkul.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.muhasebe.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.ogrenci_isleri.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.Properties.Resources.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.tanima.resources
+C:\Users\Sefa Senol\Documents\GitHub\DershaneOtomasyonu\otomasyon\obj\Debug\otomasyon.csproj.GenerateResource.Cache
