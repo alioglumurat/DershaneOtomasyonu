@@ -17,14 +17,16 @@ namespace otomasyon
             InitializeComponent();
         }
 
-        private void muhasebe_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void muhasebe_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            demirbas dmr = new demirbas();
+            dmr.Show();
+            this.Hide();
         }
     }
 }

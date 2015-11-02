@@ -1,40 +1,72 @@
-calisanGetir --- sistemde tanimli olan admin disinda ki tüm kullanicilari getirir.
-------------PROCEDURE-----------------
+ALTER procedure [dbo].[demirbasdataekle]
+@adi varchar(500),
+@adet tinyint,
+@personelid int,
+@fiyat money,
+@lokasyon varchar(500),
+@aciklama varchar(500)
+
+as
+begin
+
+insert into demirbas (adi,adet,personelId,fiyat,lokasyon,aciklama) values(@adi,@adet,@personelid,@fiyat,@lokasyon,@aciklama)
+
+end
+************************************************************************************************
+
+ALTER procedure [dbo].[demirbasdatagetir]
+as
+begin
+
+select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p left join demirbas as d on d.personelId=p.id
+
+end
+********************************************************************************************************
+
+ALTER procedure [dbo].[demirbasdataguncelle]
+@id int,
+@adi varchar(500),
+@adet tinyint,
+@personelid int,
+@fiyat money,
+@lokasyon varchar(500),
+@aciklama varchar(500)
+as
+begin
 
 
-dersGetir --- derslerin listesini getiren bir procedure.
+update demirbas set adi=@adi,adet=@adet,personelId=@personelid,fiyat=@fiyat,lokasyon=@lokasyon,aciklama=@aciklama where id=@id
 
-dersSaatigetir ---   seçilen dersin saatini getiren procedure.
+end
 
-users-- sistemde kayitli olan kullanici listesi procedure.
+****************************************************************************************************************
 
-userSave-- sisteme kullanici kayit eden procedure
+ALTER procedure [dbo].[demirbasdatasil]
+@id int
 
-degis --- personel bilgilerini kayit eder.
+as
+begin
 
-gorusmeKaydet--- yapilan görüsmeyi kaydeder.
+delete from demirbas where id=@id
 
-rapor--- yapilan satislarin raporunu getirir. seçilen yil, ay ve satis yapan kisinin isim soyismine göre basarili,basarisiz veya ihtimalli satislari getirir.
+end
 
+**************************************************************************************************
 
-----------------FUNCTION-----------
+ALTER procedure [dbo].[demirbasara]
+@ara varchar(50)
+as
+begin
 
-dersIDGetir  --- seçilen dersin ID sini getirir.
-perID --- seçilen username in ID sini getirir.
-saatUcreti -- seçilen dersin saat ücretini getirir.
-wer---- sisteme giris yapan kullanicinin profil bilgilerinin kayitli olma durumunu kontrol eder.
-toplamDersSaati ----- seçilen dersin sistemde kayitli olan saat sayisini getirir.
+select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p  left join demirbas as d on d.personelId=p.id where ((contains((p.adi,p.soyadi),@ara) or contains((d.adi),@ara)))
 
+end
 
+**********************************************************************************************
 
-------------PROCEDURE-----------------
-
-grupAdi --- Grup seçimini yapmamýzý saðlayan procedure.
-grupOgrenciveSaatIdGetir--- Grup seçildiðinde öðrenci ve saat idlerini getiren procedure.
-grupOgrenciGetir --- Grup seçildiðinde öðrencileri getiren procedure.
-grupSaatGetir --- Grup seçildiðinde saatleri getiren procedure.
-devamsizlik --- Devamsýzlýk ekleyen procedure.
-devamsizlikListele --- Seçilen devamsýzlýk tablosunu gösteren procedure.
-devamsizlikSil --- Seçilen devamsýzlýklarý silmemizi saðlayan procedure.
-devamsizlikGuncelle --- Seçilen devamsýzlýklarý güncellememizi saðlayan procedure.
-
+ALTER procedure [dbo].[demirbasveriguncelle]
+as
+begin
+select p.adi,p.soyadi,d.personelId,d.adi as demirbasadi,d.adet,d.id,d.fiyat,d.lokasyon,d.aciklama,d.tarih from personelProfil as p left join demirbas as d on d.personelId=p.id
+end
+******************************************************************************************************

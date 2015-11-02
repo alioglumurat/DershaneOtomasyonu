@@ -7,19 +7,17 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-using System.Collections;
 
 namespace otomasyon
 {
     class DB
     {
-        private String dataSource = "OMER-PC";
+        private String dataSource = ".";
         private String database = "dershaneERP";
         private String userId = "sa";
-        private String pass = "54321";
+        private String pass = "12345";
 
         SqlConnection con;
-
 
         public DB()
         {
@@ -29,7 +27,7 @@ namespace otomasyon
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bağlantı tanımlama hatası");
+                MessageBox.Show("Bağlantı tanımlama hatası"+ex);
               
             }
         }
@@ -68,8 +66,6 @@ namespace otomasyon
             }
         }
 
-      
-
         public int userState(String username, String password)
         {
             int state=-1;
@@ -93,16 +89,12 @@ namespace otomasyon
 
                 if (oku.Read())
                 {
-                    Form1.state = Convert.ToInt32(oku["State"]);
-                    Form1.degisken = username;
+                    state = Convert.ToInt32(oku["State"]);
                     MessageBox.Show("Sisteme hoşgeldiniz");
-                   
                 }
                 else
                 {
                     MessageBox.Show("Hatalı giriş yaptınız");
-                    kapat();
-                   Form1.state= - 1;
                 }
 
             }
@@ -171,90 +163,83 @@ namespace otomasyon
             return sb.ToString();
         }
 
-        public SqlDataReader dersGetir()
+
+        public SqlDataReader ozdatagetir(String prcadi)
         {
             SqlDataReader oku = null;
-
             try
             {
-                SqlCommand islem = new SqlCommand("dersGetir",baglan());
-                oku = islem.ExecuteReader();
+                SqlCommand cm = new SqlCommand(prcadi, baglan());
+                cm.CommandType = CommandType.StoredProcedure;
+                oku = cm.ExecuteReader();
 
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Ders getirme hatası"+ex);
+                MessageBox.Show("Data getirme haatsı" + ex);
+
             }
 
             return oku;
+
         }
 
-        public SqlCommand dersSaatiGetir(String kelime)
-        {
-            
-            SqlCommand calis=null;
-            try
-            {
-                calis = new SqlCommand("SELECT dbo.toplamDersSaati(@sorgu)", baglan());
-                //calis.CommandType = CommandType.StoredProcedure;
-                SqlParameter ax = new SqlParameter("@sorgu", SqlDbType.VarChar, 50);
-                ax.Direction = ParameterDirection.Input;
-                ax.Value = kelime;
-                calis.Parameters.Add(ax);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ders saati getirme hatası"+ex);
-            }
-            return calis;
-     
-        }
-
-       
-        public int saatUcreti(String dersAdi)
+        //public int ozdataekle(String adi, int adet, int personelid, int fiyat, String lokasyon, String aciklama)
+        public int ozdataekle(String adi, String adet, String personelid, String fiyat, String lokasyon, String aciklama)
         {
             int sayi = 0;
+
             try
             {
-                SqlCommand islem = new SqlCommand("SELECT dbo.saatUcreti(@d_adi)", baglan());
-                SqlParameter ax = new SqlParameter("@d_adi", SqlDbType.VarChar, 50);
-                ax.Direction = ParameterDirection.Input;
-                ax.Value = dersAdi;
-                islem.Parameters.Add(ax);
-                sayi =Convert.ToInt32(islem.ExecuteScalar());
+                SqlCommand islem = new SqlCommand("demirbasdataekle", baglan());
+                islem.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter a = new SqlParameter("adi", SqlDbType.VarChar, 500);
+                a.Direction = ParameterDirection.Input;
+                a.Value = adi;
+                islem.Parameters.Add(a);
+
+                SqlParameter b = new SqlParameter("adet", SqlDbType.TinyInt);
+                b.Direction = ParameterDirection.Input;
+                b.Value = adet;
+                islem.Parameters.Add(b);
+
+                SqlParameter c = new SqlParameter("personelid", SqlDbType.Int);
+                c.Direction = ParameterDirection.Input;
+                c.Value = personelid;
+                islem.Parameters.Add(c);
+
+                SqlParameter d = new SqlParameter("fiyat", SqlDbType.Money);
+                d.Direction = ParameterDirection.Input;
+                d.Value = fiyat;
+                islem.Parameters.Add(d);
+
+
+                SqlParameter e = new SqlParameter("lokasyon", SqlDbType.VarChar, 500);
+                e.Direction = ParameterDirection.Input;
+                e.Value = lokasyon;
+                islem.Parameters.Add(e);
+
+                SqlParameter f = new SqlParameter("aciklama", SqlDbType.VarChar, 500);
+                f.Direction = ParameterDirection.Input;
+                f.Value = aciklama;
+                islem.Parameters.Add(f);
+
+                sayi = islem.ExecuteNonQuery();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ders saat ücreti getirme hatası");
+
+                MessageBox.Show("Data ekleme hatası" + ex);
+                sayi = -1;
             }
+
             return sayi;
         }
 
-        public int idGetir(String dersAdi)
-        {
-            int sayi = 0;
-            try
-            {
-                SqlCommand islem = new SqlCommand("SELECT dbo.dersIDGetir(@dersAdi)", baglan());
-                SqlParameter ax = new SqlParameter("@dersAdi",SqlDbType.VarChar,50);
-                ax.Direction = ParameterDirection.Input;
-                ax.Value = dersAdi;
-                islem.Parameters.Add(ax);
-                sayi = Convert.ToInt32(islem.ExecuteScalar());
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ders ıd getirme hatası"+ex);
-                
-            }
-            return sayi;
-
-        }
-        
 
     }
 }

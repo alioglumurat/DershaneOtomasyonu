@@ -34,13 +34,15 @@ namespace otomasyon
 
             db.kapat();
 
+            this.Hide();
+            Form1 frm = new Form1();
+            frm.Show();
+
         }
 
-        private void kaydetkul_FormClosed(object sender, FormClosedEventArgs e)
+        private void kaydetkul_Load(object sender, EventArgs e)
         {
-            this.Hide();
-            admin_panel adm = new admin_panel();
-            adm.Show();
+
         }
     }
 }

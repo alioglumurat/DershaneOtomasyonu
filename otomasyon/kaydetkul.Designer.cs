@@ -49,7 +49,7 @@
             // 
             // txt_username
             // 
-            this.txt_username.Location = new System.Drawing.Point(153, 49);
+            this.txt_username.Location = new System.Drawing.Point(153, 42);
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(133, 20);
             this.txt_username.TabIndex = 1;
@@ -113,7 +113,7 @@
             this.Controls.Add(this.button1);
             this.Name = "kaydetkul";
             this.Text = "kaydetkul";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kaydetkul_FormClosed);
+            this.Load += new System.EventHandler(this.kaydetkul_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
