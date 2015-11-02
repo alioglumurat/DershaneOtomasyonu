@@ -7,23 +7,25 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Collections;
 
 namespace otomasyon
 {
     class DB
     {
-        private String dataSource = "SEFA";
+        private String dataSource = "OMER-PC";
         private String database = "dershaneERP";
-        private String userId = "";
-        private String pass = "";
+        private String userId = "sa";
+        private String pass = "54321";
 
         SqlConnection con;
+
 
         public DB()
         {
             try
             {
-                con = new SqlConnection("Initial Catalog = dershaneERP; Data Source= SEFA;Integrated Security=True;");
+                con = new SqlConnection("Data Source="+dataSource+"; Database="+database+"; Persist Security Info=False; User ID="+userId+"; Password="+pass+"");
             }
             catch (Exception ex)
             {
@@ -66,6 +68,8 @@ namespace otomasyon
             }
         }
 
+      
+
         public int userState(String username, String password)
         {
             int state=-1;
@@ -89,12 +93,16 @@ namespace otomasyon
 
                 if (oku.Read())
                 {
-                    state = Convert.ToInt32(oku["State"]);
+                    Form1.state = Convert.ToInt32(oku["State"]);
+                    Form1.degisken = username;
                     MessageBox.Show("Sisteme hoşgeldiniz");
+                   
                 }
                 else
                 {
                     MessageBox.Show("Hatalı giriş yaptınız");
+                    kapat();
+                   Form1.state= - 1;
                 }
 
             }
@@ -162,6 +170,91 @@ namespace otomasyon
         
             return sb.ToString();
         }
+
+        public SqlDataReader dersGetir()
+        {
+            SqlDataReader oku = null;
+
+            try
+            {
+                SqlCommand islem = new SqlCommand("dersGetir",baglan());
+                oku = islem.ExecuteReader();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ders getirme hatası"+ex);
+            }
+
+            return oku;
+        }
+
+        public SqlCommand dersSaatiGetir(String kelime)
+        {
+            
+            SqlCommand calis=null;
+            try
+            {
+                calis = new SqlCommand("SELECT dbo.toplamDersSaati(@sorgu)", baglan());
+                //calis.CommandType = CommandType.StoredProcedure;
+                SqlParameter ax = new SqlParameter("@sorgu", SqlDbType.VarChar, 50);
+                ax.Direction = ParameterDirection.Input;
+                ax.Value = kelime;
+                calis.Parameters.Add(ax);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ders saati getirme hatası"+ex);
+            }
+            return calis;
+     
+        }
+
+       
+        public int saatUcreti(String dersAdi)
+        {
+            int sayi = 0;
+            try
+            {
+                SqlCommand islem = new SqlCommand("SELECT dbo.saatUcreti(@d_adi)", baglan());
+                SqlParameter ax = new SqlParameter("@d_adi", SqlDbType.VarChar, 50);
+                ax.Direction = ParameterDirection.Input;
+                ax.Value = dersAdi;
+                islem.Parameters.Add(ax);
+                sayi =Convert.ToInt32(islem.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ders saat ücreti getirme hatası");
+            }
+            return sayi;
+        }
+
+        public int idGetir(String dersAdi)
+        {
+            int sayi = 0;
+            try
+            {
+                SqlCommand islem = new SqlCommand("SELECT dbo.dersIDGetir(@dersAdi)", baglan());
+                SqlParameter ax = new SqlParameter("@dersAdi",SqlDbType.VarChar,50);
+                ax.Direction = ParameterDirection.Input;
+                ax.Value = dersAdi;
+                islem.Parameters.Add(ax);
+                sayi = Convert.ToInt32(islem.ExecuteScalar());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ders ıd getirme hatası"+ex);
+                
+            }
+            return sayi;
+
+        }
+        
 
     }
 }
