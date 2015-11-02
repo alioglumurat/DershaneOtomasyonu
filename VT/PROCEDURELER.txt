@@ -1,172 +1,40 @@
-ALTER procedure [dbo].[cekguncelle]
-@cekkabultarih datetime,
-@cekzamani datetime,
-@bankabilgisi varchar (500),
-@durum tinyint,
-@id int
-as
-begin
-update gelirler set odenmetarihi=@cekkabultarih, odemetarihi=@cekzamani,aciklama=@bankabilgisi,durum=@durum where id=@id 
-end
---------------------------------------------------
-ALTER procedure [dbo].[cekkontrol]
-as
-declare @odemekontrol tinyint
-declare @tarih datetime
-set @odemekontrol=3
-set @tarih=GETDATE()
-begin
-select  g.id, g.taksitno as VadeZamaný,g.tutar,g.odemetarihi as CekKabulTarihi,g.odenmetarihi as CekZamani ,g.aciklama as BankaBilgisi,g.durum as Durum from gelirler as g left join satis as s on s.id=g.satisId where @tarih>g.odenmetarihi and @odemekontrol=s.odemeTipi and g.durum=0
+calisanGetir --- sistemde tanimli olan admin disinda ki tüm kullanicilari getirir.
+------------PROCEDURE-----------------
 
-end
------------------------------------------------------------
-ALTER  procedure [dbo].[cekodeme]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
 
-as
-begin
+dersGetir --- derslerin listesini getiren bir procedure.
 
-declare @satisid int, @vade int, @cnt int
-declare @tarih dateTime
-declare @tutar money
-declare @odemetipi tinyint
-declare @durum tinyint
+dersSaatigetir ---   seçilen dersin saatini getiren procedure.
 
-set @durum=3;
-begin
-select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih,@tutar=gor.sonFiyat,@odemetipi=s.odemeTipi from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-if(@odemetipi=@durum) 
-set @tarih = DATEADD(month, @vade,CURRENT_TIMESTAMP)
-insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @vade, @tarih,@tutar)
-end
-end
------------------------------------------------------
-ALTER procedure [dbo].[cekodemeguncelle]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
-as
-begin
-declare @odemetipi tinyint 
-set @odemetipi=3
-select g.id, g.taksitno as VadeZamaný,g.tutar,g.odemetarihi as CekKabulTarihi,g.odenmetarihi as CekZamani ,g.aciklama as BankaBilgisi,g.durum as Durum from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad and s.odemeTipi=@odemetipi
-end
------------------------------------------------------------
-ALTER procedure [dbo].[cekodemetablo]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
-as
-begin
+users-- sistemde kayitli olan kullanici listesi procedure.
 
-select g.id, g.taksitno as VadeZamaný,g.tutar,g.odemetarihi as CekKabulTarihi,g.odenmetarihi as CekZamani ,g.aciklama as BAnkaBilgisi, g.durum as Durum from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-end
--------------------------------------------------------------
-ALTER procedure [dbo].[guncellenmistablo]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
-as
-begin
-select g.id, g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-end
-------------------------------------------------------------------
-ALTER  procedure [dbo].[hesapguncelle]
-@odenmetarihi datetime,
-@tutar money,
-@aciklama varchar (500),
-@durum tinyint,
-@id int
-as
-begin
-update gelirler set odenmetarihi=@odenmetarihi, tutar=@tutar,aciklama=@aciklama,durum=@durum where id=@id 
-end
--------------------------------------------------------------------
-ALTER  procedure [dbo].[ogrencibilgigetir]
-@ogrencino int,
-@ad varchar (50),
-@soyad varchar (50)
-as
-begin
-select g.id,g.taksitno,g.odemetarihi,g.odenmetarihi,g.tutar,g.durum,g.aciklama from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gors on gors.id=s.gorusmeId left join ogrenciProfil as op on op.id=gors.ogrenciProfilId where op.id=@ogrencino and op.adi=@ad and op.soyadi=@soyad
-end
----------------------------------------------------------------------
-ALTER   procedure [dbo].[ogrenciIdBul]
-@adi varchar (50),
-@soyadi varchar (50),
-@tc varchar(11)
+userSave-- sisteme kullanici kayit eden procedure
 
-as
-begin
-declare @durum tinyint
+degis --- personel bilgilerini kayit eder.
 
-set @durum=0
-select ogrprf.id,ogrprf.adi,ogrprf.soyadi,ogrprf.tcno,ogrprf.dogumTarihi,ogrprf.telefon,ogrprf.veliAdi,ogrprf.veliSoyadi,ogrprf.veliTel from gorusme as g left join ogrenciProfil as ogrprf on ogrprf.id=g.ogrenciProfilId where g.sonuc=@durum and ogrprf.adi=@adi and ogrprf.soyadi=@soyadi or ogrprf.tcno=@tc
+gorusmeKaydet--- yapilan görüsmeyi kaydeder.
 
-end
---------------------------------------------------------------------------
-ALTER  procedure [dbo].[Pesinatliodeme]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
+rapor--- yapilan satislarin raporunu getirir. seçilen yil, ay ve satis yapan kisinin isim soyismine göre basarili,basarisiz veya ihtimalli satislari getirir.
 
-as
-begin
 
-declare @satisid int, @vade int, @cnt int
-declare @tarih dateTime
-declare @tutar money, @taksitmiktari money
-set @cnt=1
-select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih,@tutar=gor.sonFiyat from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-while (@cnt<@vade+1)
-begin
-set @tarih = DATEADD(month, @cnt-1,CURRENT_TIMESTAMP)
-set @taksitmiktari = @tutar/@vade
+----------------FUNCTION-----------
 
-insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @cnt, @tarih,@taksitmiktari)
-set @cnt+=1
-end
-end
-------------------------------------
-ALTER procedure [dbo].[pesinatliodemetablo]
-@ogrencino int,
-@adi varchar (50),
-@soyad varchar (50)
-as
-begin
+dersIDGetir  --- seçilen dersin ID sini getirir.
+perID --- seçilen username in ID sini getirir.
+saatUcreti -- seçilen dersin saat ücretini getirir.
+wer---- sisteme giris yapan kullanicinin profil bilgilerinin kayitli olma durumunu kontrol eder.
+toplamDersSaati ----- seçilen dersin sistemde kayitli olan saat sayisini getirir.
 
-select g.id, g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-end
------------------------------------------------------
-ALTER  procedure [dbo].[Pesinatsiz]
-@ogrencino int,
-@adi varchar(50),
-@soyad varchar (50)
-as
-begin
-declare @satisid int, @vade int, @cnt int
-declare @tarih dateTime
-declare @tutar money, @taksittutari money
-set @cnt=1
-select @satisid=g.satisId,@vade=s.vadeSayisi,@tarih = s.tarih, @tutar=gor.sonFiyat from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-while (@cnt<@vade+1)
-begin
-set @tarih = DATEADD(month, @cnt,CURRENT_TIMESTAMP)
-set @taksittutari =@tutar/@vade
-insert into gelirler (satisId, taksitno, odemetarihi,tutar) values (@satisid, @cnt, @tarih,@taksittutari)
-set @cnt+=1
-end
-end
-----------------------------------------------------------------
-ALTER  procedure [dbo].[pesinatsizodemetablo]
-@ogrencino int,
-@adi varchar(50),
-@soyad varchar (50)
 
-as
-begin
-select g.id, g.taksitno,g.tutar,g.odemetarihi,g.odenmetarihi,g.durum,g.aciklama from gelirler as g left join satis as s on s.id=g.satisId left join gorusme as gor on s.gorusmeId=gor.id left join ogrenciProfil as op on gor.ogrenciProfilId=op.id where op.id=@ogrencino and op.adi=@adi and op.soyadi=@soyad
-end
-------------------------------------------------------
+
+------------PROCEDURE-----------------
+
+grupAdi --- Grup seçimini yapmamýzý saðlayan procedure.
+grupOgrenciveSaatIdGetir--- Grup seçildiðinde öðrenci ve saat idlerini getiren procedure.
+grupOgrenciGetir --- Grup seçildiðinde öðrencileri getiren procedure.
+grupSaatGetir --- Grup seçildiðinde saatleri getiren procedure.
+devamsizlik --- Devamsýzlýk ekleyen procedure.
+devamsizlikListele --- Seçilen devamsýzlýk tablosunu gösteren procedure.
+devamsizlikSil --- Seçilen devamsýzlýklarý silmemizi saðlayan procedure.
+devamsizlikGuncelle --- Seçilen devamsýzlýklarý güncellememizi saðlayan procedure.
+
